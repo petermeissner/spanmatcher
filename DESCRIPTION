@@ -4,7 +4,10 @@ Title: Matching time span data
 Version: 0.1.0
 Author: Peter Meissner
 Maintainer: Peter Meissner <retep.meissner@gmail.com>
-Description: no further description
+Description: Merging time span data used for survival analysis via building new
+    spans out of overlapping spans. For each context change (id1 data changes |
+    id2 data changes)  a new span is formed. Spans neither covered within
+    dataset 1 nor 2 are put into separate spans.
 License: GPL-2
 LazyData: TRUE
 Imports:

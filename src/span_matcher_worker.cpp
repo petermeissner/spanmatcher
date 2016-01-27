@@ -14,6 +14,7 @@ DataFrame span_matcher_worker(DataFrame df1, DataFrame df2) {
   IntegerVector   start_one_in = df1[1];
   IntegerVector   end_one_in   = df1[2];
 
+
   CharacterVector id_two_in = df2[0];
   IntegerVector   start_two_in = df2[1];
   IntegerVector   end_two_in   = df2[2];
