@@ -1,15 +1,30 @@
-#' function for matching time spans
+df1 = data.frame(
+  id1 = letters[1:5],
+  from2 = c(1,3000,4000,7000,8000),
+  to2   = c(2000,4000,5000,9000,10000)
+)
 
+df2 = data.frame(
+  id2   = letters[11:13],
+  from2 = c(2,7000,7000),
+  to2   = c(5000,9000,11000)
+)
+
+
+#' function for matching time spans
+#' @useDynLib spanmatcher
+#' @importFrom Rcpp sourceCpp
+#' @export
 span_matcher <- function(
   df1 = data.frame(
-    id1 = letters[1:4],
-    from2 = c(1,3,6,8),
-    to2   = c(2,4,7,10)
-    ),
+    id1 = letters[1:5],
+    from2 = c(1,3,4,7,8),
+    to2   = c(2,4,5,9,10)
+  ),
   df2 = data.frame(
-    id2   = letters[11:3],
-    from2 = c(2,6,8),
-    to2   = c(5,7,18)
+    id2   = letters[11:13],
+    from2 = c(2,7,7),
+    to2   = c(5,9,11)
     ),
   split_after=NA,
   split_before=NA
@@ -37,3 +52,22 @@ span_matcher <- function(
   # output
   return(span_matcher_worker(df1, df2))
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
