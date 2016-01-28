@@ -7,7 +7,7 @@ Peter Meissner
 
 
 
-
+<br><br>
 **Status:** working but experimental and possibly subject to change
 
 **Author:** Peter Meißner
@@ -22,6 +22,8 @@ Merging time span data used for survival analysis via building new
     dataset 1 nor 2 are put into separate spans.
 
 
+
+<br><br>
 **Installation and start - development version**
 
 
@@ -30,41 +32,39 @@ devtools::install_github("petermeissner/spanmatcher")
 library(spanmatcher)
 ```
 
+
+
+<br><br>
 **Usage**
 
-Loading the package and making up some data ... 
+Loading the package and making up some data
 
 
 ```r
 library(spanmatcher)
 
 df1 = data.frame(
-  id1 = paste(letters[1:5], round(runif(5)*10000), sep="_" ),
-  from2 = as.Date(c(1,3000,4000,7000,8000), origin = "1960-01-01"),
-  to2   = as.Date(c(2000,4000,5000,9000,10000), origin = "1960-01-01")
+  id1 = letters[1:5],
+  from2 = as.Date(c(1,3,4,7,8), origin = "1970-01-01"),
+  to2   = as.Date(c(2,4,5,9,10), origin = "1970-01-01")
 )
 
 df2 = data.frame(
-  id2   = paste(LETTERS[11:13], round(runif(3)*10000), sep="_" ),
-  from2 = as.Date(c(2,7000,7000), origin = "1960-01-01"),
-  to2   = as.Date(c(5000,9000,11000), origin = "1960-01-01")
+  id2   = LETTERS[11:13],
+  from2 = as.Date(c(2,7,7), origin = "1970-01-01"),
+  to2   = as.Date(c(5,9,11), origin = "1970-01-01")
 ) 
-```
 
-... having a look at the data ... 
-
-
-```r
 df1
 ```
 
 ```
-##      id1      from2        to2
-## 1 a_2094 1960-01-02 1965-06-23
-## 2 b_5594 1968-03-19 1970-12-14
-## 3 c_8344 1970-12-14 1973-09-09
-## 4 d_9865 1979-03-02 1984-08-22
-## 5 e_9883 1981-11-26 1987-05-19
+##   id1      from2        to2
+## 1   a 1970-01-02 1970-01-03
+## 2   b 1970-01-04 1970-01-05
+## 3   c 1970-01-05 1970-01-06
+## 4   d 1970-01-08 1970-01-10
+## 5   e 1970-01-09 1970-01-11
 ```
 
 ```r
@@ -72,32 +72,79 @@ df2
 ```
 
 ```
-##      id2      from2        to2
-## 1 K_4979 1960-01-03 1973-09-09
-## 2 L_3472 1979-03-02 1984-08-22
-## 3 M_9195 1979-03-02 1990-02-12
+##   id2      from2        to2
+## 1   K 1970-01-03 1970-01-06
+## 2   L 1970-01-08 1970-01-10
+## 3   M 1970-01-08 1970-01-12
 ```
 
 
-Mergin/joining the data.
+Mergin/joining the data
 
 
 ```r
-head(span_matcher(df1, df2))
+span_matcher(df1, df2)
 ```
 
 ```
-##      id1    id2 start   end
-## 1 a_2094 K_4979 -3651 -1653
-## 2 b_5594 K_4979  -653   347
-## 3 c_8344 K_4979   347  1347
-## 4 d_9865 L_3472  3347  5347
-## 5 e_9883 L_3472  4347  5347
-## 6 d_9865 M_9195  3347  5347
+##     id1  id2      start        end
+## 1     a <NA> 1970-01-02 1970-01-02
+## 2     a    K 1970-01-03 1970-01-03
+## 3     b    K 1970-01-04 1970-01-05
+## 4     c    K 1970-01-05 1970-01-06
+## 5  <NA> <NA> 1970-01-07 1970-01-07
+## 6     d    L 1970-01-08 1970-01-10
+## 7     d    M 1970-01-08 1970-01-10
+## 8     e    L 1970-01-09 1970-01-10
+## 9     e    M 1970-01-09 1970-01-11
+## 10 <NA>    M 1970-01-12 1970-01-12
+```
+
+
+Splitting spans
+
+
+```r
+span_matcher(df1,df2, split_after = c(4))
+```
+
+```
+##     id1  id2      start        end
+## 1     a <NA> 1970-01-02 1970-01-02
+## 2     a    K 1970-01-03 1970-01-03
+## 3     b    K 1970-01-04 1970-01-05
+## 4     c    K 1970-01-05 1970-01-05
+## 5     c    K 1970-01-06 1970-01-06
+## 6  <NA> <NA> 1970-01-07 1970-01-07
+## 7     d    L 1970-01-08 1970-01-10
+## 8     d    M 1970-01-08 1970-01-10
+## 9     e    L 1970-01-09 1970-01-10
+## 10    e    M 1970-01-09 1970-01-11
+## 11 <NA>    M 1970-01-12 1970-01-12
+```
+
+```r
+span_matcher(df1,df2, split_before = c(10))
+```
+
+```
+##     id1  id2      start        end
+## 1     a <NA> 1970-01-02 1970-01-02
+## 2     a    K 1970-01-03 1970-01-03
+## 3     b    K 1970-01-04 1970-01-05
+## 4     c    K 1970-01-05 1970-01-06
+## 5  <NA> <NA> 1970-01-07 1970-01-07
+## 6     d    L 1970-01-08 1970-01-10
+## 7     d    M 1970-01-08 1970-01-10
+## 8     e    L 1970-01-09 1970-01-10
+## 9     e    M 1970-01-09 1970-01-10
+## 10    e    M 1970-01-11 1970-01-11
+## 11 <NA>    M 1970-01-12 1970-01-12
 ```
 
 
 
+<br><br>
 **Contribution**
 
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms:

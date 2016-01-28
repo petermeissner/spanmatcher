@@ -10,9 +10,9 @@ Description: Merging time span data used for survival analysis via building new
     dataset 1 nor 2 are put into separate spans.
 License: GPL-2
 LazyData: TRUE
-Imports: 
+Imports:
     Rcpp (>= 0.12.2)
 LinkingTo: Rcpp
 RoxygenNote: 5.0.1
 SystemRequirements: C++11
-Suggests: testthat
+Suggests: testthat, dplyr
