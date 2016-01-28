@@ -1,0 +1,14 @@
+#!/usr/bin/Rscript
+
+library(testthat)
+
+if( Sys.info()["nodename"]=="ZUKD208" ){
+	auto_test(
+		code_path="C:/Dropbox/RPackages/spanmatcher/r", 
+		test_path="C:/Dropbox/RPackages/spanmatcher/tests/testthat"
+	)
+}
+
+if( Sys.info()["nodename"]=="peter-mint" ){
+	auto_test_package(pkg = "~/Dropbox/RPackages/spanmatcher", reporter = "summary")
+}
