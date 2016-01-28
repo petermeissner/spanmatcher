@@ -67,21 +67,6 @@ img {
 </div>
 
 
-<table>
-<tr>
-<td>
- 
-</td>
-</tr>
-<tr>
-<td>
-Ubuntu build
-</td>
-<td>
-<a href="https://travis-ci.org/petermeissner/spanmatcher"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCI+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgcng9IjMiIHdpZHRoPSI5OCIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHJ4PSIzIiB4PSIzNyIgd2lkdGg9IjYxIiBoZWlnaHQ9IjIwIiBmaWxsPSIjOWY5ZjlmIi8+PHBhdGggZmlsbD0iIzlmOWY5ZiIgZD0iTTM3IDBoNHYyMGgtNHoiLz48cmVjdCByeD0iMyIgd2lkdGg9Ijk4IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI2EpIi8+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPjx0ZXh0IHg9IjE5LjUiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj5idWlsZDwvdGV4dD48dGV4dCB4PSIxOS41IiB5PSIxNCI+YnVpbGQ8L3RleHQ+PHRleHQgeD0iNjYuNSIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPnVua25vd248L3RleHQ+PHRleHQgeD0iNjYuNSIgeT0iMTQiPnVua25vd248L3RleHQ+PC9nPjwvc3ZnPg=="></a>
-</td>
-</tr>
-</table>
 <p><strong>Status:</strong> working but experimental and possibly subject to change</p>
 <p><strong>Author:</strong> Peter Meißner</p>
 <p><strong>Licence:</strong> GPL-2</p>
@@ -108,25 +93,25 @@ df2 = data.frame(
 <p>… having a look at the data …</p>
 <pre class="r"><code>df1</code></pre>
 <pre><code>##      id1      from2        to2
-## 1 a_8979 1960-01-02 1965-06-23
-## 2 b_2828 1968-03-19 1970-12-14
-## 3 c_9541 1970-12-14 1973-09-09
-## 4 d_7237 1979-03-02 1984-08-22
-## 5 e_8921 1981-11-26 1987-05-19</code></pre>
+## 1 a_2094 1960-01-02 1965-06-23
+## 2 b_5594 1968-03-19 1970-12-14
+## 3 c_8344 1970-12-14 1973-09-09
+## 4 d_9865 1979-03-02 1984-08-22
+## 5 e_9883 1981-11-26 1987-05-19</code></pre>
 <pre class="r"><code>df2</code></pre>
 <pre><code>##      id2      from2        to2
-## 1 K_3880 1960-01-03 1973-09-09
-## 2 L_7441 1979-03-02 1984-08-22
-## 3 M_6689 1979-03-02 1990-02-12</code></pre>
+## 1 K_4979 1960-01-03 1973-09-09
+## 2 L_3472 1979-03-02 1984-08-22
+## 3 M_9195 1979-03-02 1990-02-12</code></pre>
 <p>Mergin/joining the data.</p>
 <pre class="r"><code>head(span_matcher(df1, df2))</code></pre>
 <pre><code>##      id1    id2 start   end
-## 1 a_8979 K_3880 -3651 -1653
-## 2 b_2828 K_3880  -653   347
-## 3 c_9541 K_3880   347  1347
-## 4 d_7237 L_7441  3347  5347
-## 5 e_8921 L_7441  4347  5347
-## 6 d_7237 M_6689  3347  5347</code></pre>
+## 1 a_2094 K_4979 -3651 -1653
+## 2 b_5594 K_4979  -653   347
+## 3 c_8344 K_4979   347  1347
+## 4 d_9865 L_3472  3347  5347
+## 5 e_9883 L_3472  4347  5347
+## 6 d_9865 M_9195  3347  5347</code></pre>
 <p><strong>Contribution</strong></p>
 <p>Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms:</p>
 <blockquote>

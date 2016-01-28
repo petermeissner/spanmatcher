@@ -10,13 +10,7 @@ output:
 
 
 
-<table>
-<tr><td>&nbsp;</td></tr>
-<tr>
-<td> Ubuntu build </td>
-<td> <a href="https://travis-ci.org/petermeissner/spanmatcher"><img src="https://api.travis-ci.org/petermeissner/spanmatcher.svg?branch=master"></a></td>
-</tr>
-</table>
+
 
 
 **Status:** working but experimental and possibly subject to change
