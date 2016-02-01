@@ -1,7 +1,7 @@
 ---
 title: "spanmatcher"
 author: "Peter Meissner"
-date: "28 Januar 2016"
+date: "01 February 2016"
 output: 
   html_document: 
     keep_md: yes
@@ -13,7 +13,7 @@ output:
 
 
 <br><br>
-**Status:** working but experimental and possibly subject to change
+**Status:** experimental, for own education only, possibly subject to change, still quite slow
 
 **Author:** Peter Meißner
 
